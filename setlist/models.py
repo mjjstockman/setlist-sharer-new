@@ -24,9 +24,9 @@ class Gig(models.Model):
 class Song(models.Model):
     title = models.CharField(max_length=200)
 
-
     def __str__(self):
         return self.title
+
 
 class Release(models.Model):
     title = models.CharField(max_length=200)
@@ -37,9 +37,9 @@ class Release(models.Model):
 
 
 class Setlist(models.Model):
-    # gig = models.OneToOneField(Gig, on_delete=models.CASCADE, null=True)
-    # user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    # song = models.ManyToManyField(Song)
+    gig = models.OneToOneField(Gig, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    song = models.ManyToManyField(Song)
     status = models.IntegerField(choices=STATUS, default=0)
 
     # def __str__(self):
