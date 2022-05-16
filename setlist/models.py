@@ -23,13 +23,14 @@ class Gig(models.Model):
 
 class Song(models.Model):
     title = models.CharField(max_length=200)
-    # release =
+
 
     def __str__(self):
         return self.title
 
 class Release(models.Model):
     title = models.CharField(max_length=200)
+    song = models.ManyToManyField(Song)
 
     def __str__(self):
         return self.title
