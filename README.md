@@ -17,7 +17,9 @@
    - [Changes to the design throughout development](#Changes-to-the-design-throughout-development)
    - [Colour Scheme](#Colour-Scheme)
    - [Typography](#typography)
-3. [Features](#Features)
+3. [Database Design](#Database-Design)
+   - [ERD](#Entity Relationship Diagram)
+4. [Features](#Features)
    - [Navigation and Header](#Navigation-and-Header)
    - [Hero Image](#Hero-Image)
    - [About Information Box](#About-Information-Box)
@@ -26,13 +28,13 @@
    - [Courses Section](#Courses-Section)
    - [Contact Section](#Contact-Section)
    - [Footer](#Footer)
-4. [Future Features](#Features-to-Implement-in-the-future)
-5. [Testing](#Testing)
-6. [Deployment](#Deployment)
+5. [Future Features](#Features-to-Implement-in-the-future)
+6. [Testing](#Testing)
+7. [Deployment](#Deployment)
    - [How the site was Deployed](#How-the-site-was-Deployed)
    - [How to Fork the Repository](#How-to-Fork-the-Repository)
    - [How to create a Clone](#How-to-create-a-Clone-using-SSH)
-7. [Credits](#Credits)
+8. [Credits](#Credits)
    - [Images](#Images)
    - [Acknowledgements](#Acknowledgements)
 
@@ -113,6 +115,12 @@ Blue was chosen as the main colour for the site. Research had shown that this is
 - Body: Poppins, with a fallback of sans-serif.
 
 [Back to top ⇧](#Hull-College)
+
+# Database Design
+
+## Entity Relationship Diagram
+
+<img src="docs/readme_images/MVP-ERD.jpg"  alt="The hero image">
 
 # Features
 
