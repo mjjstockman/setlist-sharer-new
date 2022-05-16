@@ -11,11 +11,11 @@ class Venue(models.Model):
 
     def __str__(self):
         return self.name
-        
+
 class Gig(models.Model):
     city = models.CharField(max_length=200)
     date = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
-    # venue = 
+    venue = models.ForeignKey(Venue, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.city
@@ -33,13 +33,6 @@ class Release(models.Model):
 
     def __str__(self):
         return self.title
-
-class Venue(models.Model):
-    name = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
 
 
 class Setlist(models.Model):
