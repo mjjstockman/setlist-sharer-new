@@ -1,12 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 STATUS = ((0, 'Waiting Confirmation'), (1, 'Published'))
 
 # Create your models here.
+class Venue(models.Model):
+    name = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+        
 class Gig(models.Model):
     city = models.CharField(max_length=200)
-    # date =
+    date = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
     # venue = 
 
     def __str__(self):
