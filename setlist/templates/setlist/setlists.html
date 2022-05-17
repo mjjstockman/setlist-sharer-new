@@ -13,9 +13,8 @@
     {% if user.id == setlist.author.id %}
         <a href="{% url 'edit_setlist' setlist.id %}">EDIT</a>
         <a href="{% url 'delete_setlist' setlist.id %}">DELETE</a>
-    <!-- <button type="button" href="{% url 'edit_setlist' setlist.id %}">Edit!</button> -->
-        <!-- {{ setlist.id }} -->
     {% endif %}
+
 {% endfor %}
 
-{% endblock %}
+{% endblock %} 

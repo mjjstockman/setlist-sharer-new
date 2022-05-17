@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
+# from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import Setlist
 from .forms import SetlistForm
+
 
 
 
@@ -23,7 +26,7 @@ def add(request):
     context = {
         'form': form
     }
-    return render(request, 'add.html', context)
+    return render(request, 'setlist/add.html', context)
 
 
 def edit(request, pk):

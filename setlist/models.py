@@ -42,6 +42,8 @@ class Setlist(models.Model):
     song = models.ManyToManyField(Song)
     status = models.IntegerField(choices=STATUS, default=0)
 
+
+    
     def __str__(self):
         return f"{self.gig.venue} on {self.gig.date}"
 

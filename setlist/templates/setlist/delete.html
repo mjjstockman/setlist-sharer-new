@@ -5,7 +5,7 @@
 Are you sure you want to delete "{{ setlist }}"?
     <form action="" method="POST">
         {% csrf_token %}
-        <a href="#">CANCEL</a>
+        <a href="{% url 'setlist' %}">CANCEL</a>
         <input type="submit" name="CONFIRM">
     </form>
 
