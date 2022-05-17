@@ -4,14 +4,17 @@
 
 {% for setlist in setlists %}
     <!-- {{ setlist }} by {{ setlist.author }}, id is {{ setlist.author.id }} logged in id is {{ user.id }} -->
+    <p><b>{{ setlist }}</b></p>
     {% for song in setlist.song.all %}
-        {{ song.title }}
+        <ul>
+            <li>{{ song.title }}</li>
+        </ul>
     {% endfor %}
-    {% if user.id == setlist.author.id  %}
+    {% if user.id == setlist.author.id %}
         <a href="{% url 'edit_setlist' setlist.id %}">EDIT</a>
         <a href="{% url 'delete_setlist' setlist.id %}">DELETE</a>
     <!-- <button type="button" href="{% url 'edit_setlist' setlist.id %}">Edit!</button> -->
-        {{ setlist.id }}
+        <!-- {{ setlist.id }} -->
     {% endif %}
 {% endfor %}
 
