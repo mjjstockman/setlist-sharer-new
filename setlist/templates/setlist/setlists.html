@@ -13,6 +13,10 @@
             {% endfor %}
         </ul>
     {% endfor %}
+    <form action="{% url 'agree' setlist.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="setlist_id", value="{{ setlist.id }}">Agree</button>
+    </form>
     {% if user.id == setlist.author.id %}
         <a href="{% url 'edit_setlist' setlist.id %}">EDIT</a>
         <a href="{% url 'delete_setlist' setlist.id %}">DELETE</a>

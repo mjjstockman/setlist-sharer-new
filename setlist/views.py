@@ -1,10 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 # from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Setlist
 from .forms import SetlistForm
 
 
+def agree(request, pk):
+    setlist = get_object_or_404(Setlist, id=request.POST.get('setlist_id'))
+    setlist.agree.add(request.user)
+    return render(request, 'setlist/setlists.html')
 
 
 def all(request):
