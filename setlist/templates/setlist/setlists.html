@@ -8,6 +8,9 @@
     {% for song in setlist.song.all %}
         <ul>
             <li>{{ song.title }}</li>
+            {% for release in song.releases.all %}
+                {{ release }}
+            {% endfor %}
         </ul>
     {% endfor %}
     {% if user.id == setlist.author.id %}

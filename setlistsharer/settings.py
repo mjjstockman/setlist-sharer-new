@@ -128,6 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+# change to 'Europe/London'??
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
