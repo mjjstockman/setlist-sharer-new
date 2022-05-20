@@ -13,18 +13,20 @@
             {% endfor %}
         </ul>
     {% endfor %}
-    <form action="{% url 'agree' setlist.pk %}" method="POST">
+    {% if user.id != setlist.author.id %}
+        <form action="{% url 'agree' setlist.pk %}" method="POST">
         {% csrf_token %}
-        <input type="hidden" name="next" value=" {{ request.path }}">
-        <button type="submit", name="setlist_id", value="{{ setlist.id }}">Agree</button>
-    </form>
-    Argeed by {{ setlist.agree.all.count }} number of users.
-    <form action="{% url 'disagree' setlist.pk %}" method="POST">
+            <input type="hidden" name="next" value=" {{ request.path }}">
+            <button type="submit", name="setlist_id", value="{{ setlist.id }}">Agree</button>
+        </form>
+        Argeed by {{ setlist.agree.all.count }} number of users.
+        <form action="{% url 'disagree' setlist.pk %}" method="POST">
         {% csrf_token %}
-        <input type="hidden" name="next" value=" {{ request.path }}">
-        <button type="submit", name="setlist_id", value="{{ setlist.id }}">Disagree</button>
-    </form>
-    Disrgeed by {{ setlist.disagree.all.count }} number of users.
+            <input type="hidden" name="next" value=" {{ request.path }}">
+            <button type="submit", name="setlist_id", value="{{ setlist.id }}">Disagree</button>
+        </form>
+        Disrgeed by {{ setlist.disagree.all.count }} number of users.
+    {% endif %}
     {% if user.id == setlist.author.id %}
         <a href="{% url 'edit_setlist' setlist.id %}">EDIT</a>
         <a href="{% url 'delete_setlist' setlist.id %}">DELETE</a>
