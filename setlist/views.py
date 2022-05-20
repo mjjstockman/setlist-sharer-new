@@ -1,15 +1,80 @@
 from django.shortcuts import render, redirect, get_object_or_404
-# from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Setlist
 from .forms import SetlistForm
 
 
 def agree(request, pk):
-    setlist = get_object_or_404(Setlist, id=request.POST.get('setlist_id'))
-    setlist.agree.add(request.user)
+    # get relevant setlist id
+    # setlist = get_object_or_404(Setlist, id=request.POST.get('setlist_id'))
+    setlist = Setlist.objects.get(id=pk)
+    disagree = False
+
+    for disagree in setlist.disagree.all():
+        if disagree == request.user:
+            disagree = True
+            break
+
+    if disagree:
+        setlist.disagree.remove(request.user)
+
+    agree = False
+
+    for agree in setlist.agree.all():
+        if agree == request.user:
+            agree = True
+            break
+        
+    if not agree:
+        setlist.agree.add(request.user)
+
+    if agree:
+        setlist.agree.remove(request.user)
+
     return render(request, 'setlist/setlists.html')
 
+    # next = request.POST.get('next', '/')
+    # return HttpResponseRedirect(next)
+
+    # if setlist.agree.filter(id=request.user.id).exists():
+    #     setlist.agree.remove(request.user)
+    # else:
+    #     setlist.agree.add(request.user)
+    # return render(request, 'setlist/setlists.html')
+
+
+def disagree(request, pk):
+    # get relevant setlist id
+    setlist = get_object_or_404(Setlist, id=request.POST.get('setlist_id'))
+
+    agree = False
+
+    for agree in setlist.agree.all():
+        if agree == request.user:
+            agree = True
+            break
+
+    if agree:
+        setlist.agree.remove(request.user)
+
+    disagree = False
+
+    for disagree in setlist.disagree.all():
+        if disagree == request.user:
+            disagree = True
+            break
+        
+    if not disagree:
+        setlist.disagree.add(request.user)
+
+    # change to else??
+    if disagree:
+        setlist.disagree.remove(request.user)
+
+    # next = request.POST.get('next', '/')
+    # return HttpResponseRedirect(next)
+    return render(request, 'setlist/setlists.html')
 
 def all(request):
     setlists = Setlist.objects.filter(status=1)
