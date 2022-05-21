@@ -32,7 +32,10 @@ def agree(request, pk):
     if agree:
         setlist.agree.remove(request.user)
 
-    return render(request, 'setlist/setlists.html')
+    return redirect(request.META['HTTP_REFERER'])
+    #  'setlist/setlists.html')
+    # return redirect(request.path)
+    # return HttpResponseRedirect(request.path_info)
 
     # next = request.POST.get('next', '/')
     # return HttpResponseRedirect(next)
@@ -74,7 +77,7 @@ def disagree(request, pk):
 
     # next = request.POST.get('next', '/')
     # return HttpResponseRedirect(next)
-    return render(request, 'setlist/setlists.html')
+    return redirect(request.META['HTTP_REFERER'])
 
 def all(request):
     setlists = Setlist.objects.filter(status=1)
