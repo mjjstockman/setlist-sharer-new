@@ -75,8 +75,6 @@ def disagree(request, pk):
     if disagree:
         setlist.disagree.remove(request.user)
 
-    # next = request.POST.get('next', '/')
-    # return HttpResponseRedirect(next)
     return redirect(request.META['HTTP_REFERER'])
 
 def all(request):

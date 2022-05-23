@@ -43,7 +43,12 @@ class Setlist(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     agree = models.ManyToManyField(User, related_name='setlist_agree', blank=True)
     disagree = models.ManyToManyField(User, related_name='setlist_disagree', blank=True)
+    # list_filter = ('gig', 'status')
 
     def __str__(self):
         return f"{self.gig.venue} on {self.gig.date}"
+
+
+# class SetlistAdmin(admin.ModelAdmin):
+#     list_display = ('gig', 'status')
 
