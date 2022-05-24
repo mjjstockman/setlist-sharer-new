@@ -12,7 +12,7 @@
                 {{ release }}
             {% endfor %}
         </ul>
-    {% endfor %}
+    {% endfor %} 
     {% if user.id != setlist.author.id %}
         <form action="{% url 'agree' setlist.pk %}" method="POST">
         {% csrf_token %}
@@ -31,7 +31,8 @@
         <a href="{% url 'edit_setlist' setlist.id %}">EDIT</a>
         <a href="{% url 'delete_setlist' setlist.id %}">DELETE</a>
     {% endif %}
-
+    {% empty %}
+    No setlists have been added yet.
 {% endfor %}
 
 {% endblock %} 
