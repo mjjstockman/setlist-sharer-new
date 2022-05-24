@@ -11,6 +11,10 @@ admin.site.register(Venue)
 
 class SetlistAdmin(admin.ModelAdmin):
     list_display = ('gig', 'status', 'author')
+    actions = ['approve_setlist']
+
+    def approve_setlist(self, request, queryset):
+        queryset.update(status=True)
     
 
 admin.site.register(Setlist, SetlistAdmin)
