@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import Setlist
+from .models import Setlist, Gig
 from .forms import SetlistForm
 
 
@@ -79,8 +79,10 @@ def disagree(request, pk):
 
 def all(request):
     setlists = Setlist.objects.filter(status=1)
+    gigs = Gig.objects.all()
     context = {
         'setlists': setlists,
+        'gigs': gigs,
     }
     return render(request, 'setlist/setlists.html', context)
 

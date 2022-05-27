@@ -2,9 +2,20 @@
 
 {% block content %}
 
-{% for setlist in setlists %}
+{% for gig in gigs %}
+    <ul>
+        <li>{{ gig.date }} {{ gig.venue }} {{ gig.city }}</li>
+    </ul>
+    <!-- {{ gig.date }}
+    {{ gig.venue }}
+    {{ gig.city }} -->
+{% endfor %}
+
+<!-- {% for setlist in setlists %}
+    {{ setlist }} -->
+    
     <!-- {{ setlist }} by {{ setlist.author }}, id is {{ setlist.author.id }} logged in id is {{ user.id }} -->
-    <p><b>{{ setlist }}</b></p>
+    <!-- <p><b>{{ setlist }}</b></p>
     {% for song in setlist.song.all %}
         <ul>
             <li>{{ song.title }}</li>
@@ -32,7 +43,9 @@
         <a href="{% url 'delete_setlist' setlist.id %}">DELETE</a>
     {% endif %}
     {% empty %}
-    No setlists have been added yet.
-{% endfor %}
+    No setlists have been added yet. -->
+<!-- {% endfor %} -->
 
 {% endblock %} 
+
+ <!-- {{ setlist }} by {{ setlist.author }}, id is {{ setlist.author.id }} logged in id is {{ user.id }} -->
