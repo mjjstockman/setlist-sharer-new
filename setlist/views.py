@@ -87,6 +87,32 @@ def all(request):
     return render(request, 'setlist/setlists.html', context)
 
 
+def setlist_detail(request, pk):
+    # setlists = Setlist.objects.filter(status=1)
+    setlist = Setlist.objects.get(id=pk)
+    # gigs = Gig.objects.all()
+    context = {
+        'setlist': setlist,
+        # 'gigs': gigs,
+    }
+    return render(request, 'setlist/setlist-detail.html', context)
+
+
+# def edit(request, pk):
+#     setlist = Setlist.objects.get(id=pk)
+#     form = SetlistForm(instance=setlist)
+
+#     if request.method == 'POST':
+#         form = SetlistForm(request.POST, instance=setlist)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('/')
+
+#     context = {
+#         'form': form,
+#     }
+#     return render(request, 'setlist/add.html', context)
+
 def add(request):
     form = SetlistForm()
     if request.method == 'POST':
