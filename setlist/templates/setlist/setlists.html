@@ -3,9 +3,13 @@
 {% block content %}
 
 {% for gig in gigs %}
-    <ul>
-        <a href="/setlist/setlist-detail/{{ gig.setlist.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.city }}</li></a>
-    </ul>
+    {% if gig.setlist %}
+        <ul>
+            <a href="/setlist/setlist-detail/{{ gig.setlist.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.city }}</li></a>
+        </ul>
+    {% else %}
+        <li>{{ gig.date }} {{ gig.venue }} {{ gig.city }}</li>
+    {% endif %}
     <!-- {{ gig.date }}
     {{ gig.venue }} -->
     {{ gig.setlist.id }} 
