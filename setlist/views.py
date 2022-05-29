@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .models import Setlist, Gig
-from .forms import SetlistForm
+from .forms import SetlistForm, EditForm
 
 
 def agree(request, pk):
@@ -132,16 +132,19 @@ def add(request):
 
 def edit(request, pk):
     setlist = Setlist.objects.get(id=pk)
-    form = SetlistForm(instance=setlist)
+    form = EditForm(instance=setlist)
+    
 
     if request.method == 'POST':
-        form = SetlistForm(request.POST, instance=setlist)
+        form = EditForm(request.POST, instance=setlist)
+        # fields = ['song']
         if form.is_valid():
             form.save()
             return redirect('/')
 
     context = {
         'form': form,
+        # 'fields': fields,
     }
     return render(request, 'setlist/add.html', context)
 
