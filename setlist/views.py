@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from .models import Setlist, Gig
 from .forms import SetlistForm
 
@@ -87,6 +88,8 @@ def all(request):
     return render(request, 'setlist/setlists.html', context)
 
 
+
+@login_required
 def setlist_detail(request, pk):
     # setlists = Setlist.objects.filter(status=1)
     setlist = Setlist.objects.get(id=pk)
