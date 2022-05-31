@@ -1,9 +1,11 @@
 # from django.contrib import admin
 from django.urls import path
-from .views import all, add, edit, delete, agree, disagree, setlist_detail
+from home.views import gigs
+from .views import add, edit, delete, agree, disagree, setlist_detail
+
 
 urlpatterns = [
-    path('', all, name='setlist'),
+    path('', gigs, name='gigs'),
     path('add/', add, name='add_setlist'),
     path('edit/<str:pk>/', edit, name='edit_setlist'),
     path('delete/<str:pk>/', delete, name='delete_setlist'),

@@ -2,18 +2,16 @@
 
 {% block content %}
 
-<div class="container-fluid">
-    <div class="row">
+{% for gig in gigs %}
+    {% if gig.setlist %}
+        <ul>
+            <a href="/setlist/setlist-detail/{{ gig.setlist.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.city }}</li></a>
+        </ul>
+    {% else %}
+        <li>{{ gig.date }} {{ gig.venue }} {{ gig.city }}</li>
+    {% endif %}
+    {{ gig.setlist.id }} 
+{% endfor %}
 
-        <!-- Setlist Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                FROM TEMPLATE
-                
-            </div>
-        </div>
-    </div>
 
-</div>
-
-{% endblock %}
+{% endblock %} 

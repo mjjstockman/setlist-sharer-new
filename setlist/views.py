@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import Setlist, Gig
+from .models import Setlist
+from home.models import Gig
 from .forms import SetlistForm, EditForm
 
 
@@ -78,14 +79,14 @@ def disagree(request, pk):
 
     return redirect(request.META['HTTP_REFERER'])
 
-def all(request):
-    setlists = Setlist.objects.filter(status=1)
-    gigs = Gig.objects.all()
-    context = {
-        'setlists': setlists,
-        'gigs': gigs,
-    }
-    return render(request, 'setlist/setlists.html', context)
+# def all(request):
+#     setlists = Setlist.objects.filter(status=1)
+#     gigs = Gig.objects.all()
+#     context = {
+#         'setlists': setlists,
+#         'gigs': gigs,
+#     }
+#     return render(request, 'setlist/setlists.html', context)
 
 
 
