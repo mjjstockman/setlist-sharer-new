@@ -9,7 +9,7 @@
         </ul>
     {% else %}
         <li>{{ gig.date }} {{ gig.venue }} {{ gig.city }}</li>
-        <a href="/setlist/add/{{ gig.id }}">Add</a>
+        <a href="{% url 'setlist/add' gig.id %}">Add</a>
     {% endif %}
 {% endfor %}
 
