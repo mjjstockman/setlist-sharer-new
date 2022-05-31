@@ -8,8 +8,6 @@ from .forms import SetlistForm, EditForm
 
 
 def agree(request, pk):
-    # get relevant setlist id
-    # setlist = get_object_or_404(Setlist, id=request.POST.get('setlist_id'))
     setlist = Setlist.objects.get(id=pk)
     disagree = False
 
@@ -35,22 +33,9 @@ def agree(request, pk):
         setlist.agree.remove(request.user)
 
     return redirect(request.META['HTTP_REFERER'])
-    #  'setlist/setlists.html')
-    # return redirect(request.path)
-    # return HttpResponseRedirect(request.path_info)
-
-    # next = request.POST.get('next', '/')
-    # return HttpResponseRedirect(next)
-
-    # if setlist.agree.filter(id=request.user.id).exists():
-    #     setlist.agree.remove(request.user)
-    # else:
-    #     setlist.agree.add(request.user)
-    # return render(request, 'setlist/setlists.html')
 
 
 def disagree(request, pk):
-    # get relevant setlist id
     setlist = get_object_or_404(Setlist, id=request.POST.get('setlist_id'))
 
     agree = False
@@ -79,43 +64,17 @@ def disagree(request, pk):
 
     return redirect(request.META['HTTP_REFERER'])
 
-# def all(request):
-#     setlists = Setlist.objects.filter(status=1)
-#     gigs = Gig.objects.all()
-#     context = {
-#         'setlists': setlists,
-#         'gigs': gigs,
-#     }
-#     return render(request, 'setlist/setlists.html', context)
 
 
 
 @login_required
 def setlist_detail(request, pk):
-    # setlists = Setlist.objects.filter(status=1)
     setlist = Setlist.objects.get(id=pk)
-    # gigs = Gig.objects.all()
     context = {
         'setlist': setlist,
-        # 'gigs': gigs,
     }
     return render(request, 'setlist/setlist-detail.html', context)
 
-
-# def edit(request, pk):
-#     setlist = Setlist.objects.get(id=pk)
-#     form = SetlistForm(instance=setlist)
-
-#     if request.method == 'POST':
-#         form = SetlistForm(request.POST, instance=setlist)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('/')
-
-#     context = {
-#         'form': form,
-#     }
-#     return render(request, 'setlist/add.html', context)
 
 def add(request):
     form = SetlistForm()
@@ -138,14 +97,12 @@ def edit(request, pk):
 
     if request.method == 'POST':
         form = EditForm(request.POST, instance=setlist)
-        # fields = ['song']
         if form.is_valid():
             form.save()
             return redirect('/')
 
     context = {
         'form': form,
-        # 'fields': fields,
     }
     return render(request, 'setlist/add.html', context)
 
