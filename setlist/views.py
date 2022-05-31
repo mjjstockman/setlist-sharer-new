@@ -76,8 +76,9 @@ def setlist_detail(request, pk):
     return render(request, 'setlist/setlist-detail.html', context)
 
 
-def add(request):
+def add(request, pk):
     form = SetlistForm()
+    gig = Gig.objects.get(id=pk)
     if request.method == 'POST':
         form = SetlistForm(request.POST)
         if form.is_valid():
@@ -85,7 +86,8 @@ def add(request):
             return redirect('/')
 
     context = {
-        'form': form
+        'form': form,
+        'gig': gig,
     }
     return render(request, 'setlist/add.html', context)
 

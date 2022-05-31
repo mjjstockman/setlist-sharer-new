@@ -6,7 +6,7 @@ from .views import add, edit, delete, agree, disagree, setlist_detail
 
 urlpatterns = [
     path('', gigs, name='gigs'),
-    path('add/', add, name='add_setlist'),
+    path('add/<int:pk>/', add, name='add_setlist'),
     path('edit/<str:pk>/', edit, name='edit_setlist'),
     path('delete/<str:pk>/', delete, name='delete_setlist'),
     path('agree/<str:pk>/', agree, name='agree'),
