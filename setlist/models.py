@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from home.models import Gig
 
 STATUS = ((0, 'Waiting Confirmation'), (1, 'Published'))
 
@@ -13,14 +14,14 @@ class Venue(models.Model):
     def __str__(self):
         return self.name
 
-class Gig(models.Model):
-    city = models.CharField(max_length=200)
-    date = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
-    venue = models.ForeignKey(Venue, on_delete=models.CASCADE, null=True)
+# class Gig(models.Model):
+#     city = models.CharField(max_length=200)
+#     date = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
+#     venue = models.ForeignKey(Venue, on_delete=models.CASCADE, null=True)
 
 
-    def __str__(self):
-        return self.city
+    # def __str__(self):
+    #     return self.city
 
 
 class Song(models.Model):
@@ -41,7 +42,7 @@ class Release(models.Model):
 
 
 class Setlist(models.Model):
-    gig = models.OneToOneField(Gig, on_delete=models.CASCADE, null=True)
+    gig = models.OneToOneField('home.Gig', on_delete=models.CASCADE, null=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     song = models.ManyToManyField(Song)
     status = models.IntegerField(choices=STATUS, default=0)
