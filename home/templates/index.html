@@ -2,6 +2,8 @@
 
 {% block content %}
 
+aa {{ published }} aa
+
 {% for gig in gigs %}
     {% if gig.setlist %}
         <ul>
@@ -17,3 +19,11 @@
 
 
 {% endblock %} 
+
+
+{% for song in setlist.song.all %}
+    {{ song.title }}
+    {% for release in song.releases.all %}
+        {{ release }}
+    {% endfor %}
+{% endfor %}

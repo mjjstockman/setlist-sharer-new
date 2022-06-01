@@ -42,7 +42,7 @@ class Release(models.Model):
 
 
 class Setlist(models.Model):
-    gig = models.OneToOneField('home.Gig', related_name='setlist_gig' on_delete=models.CASCADE, null=True)
+    gig = models.OneToOneField('home.Gig', related_name='setlist_gig', on_delete=models.CASCADE, null=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     song = models.ManyToManyField(Song)
     status = models.IntegerField(choices=STATUS, default=0)
@@ -53,7 +53,5 @@ class Setlist(models.Model):
 
     def __str__(self):
         return f"{self.gig.venue} on {self.gig.date}"
-
-
 
 
