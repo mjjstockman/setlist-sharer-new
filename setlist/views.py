@@ -78,15 +78,13 @@ def setlist_detail(request, pk):
 
 def add(request, pk):
     gig = Gig.objects.get(id=pk)
+    author = request.user
     initial = {
             'gig': gig,
+            'author': author,
         }
     form = SetlistForm(initial=initial)
-    # gig = Gig.objects.get(id=pk)
     if request.method == 'POST':
-        
-        # form = ToyForm(initial=initial)
-
         form = SetlistForm(request.POST)
         if form.is_valid():
             form.save()
@@ -94,7 +92,6 @@ def add(request, pk):
 
     context = {
         'form': form,
-        # 'gig': gig,
     }
     return render(request, 'setlist/add.html', context)
 

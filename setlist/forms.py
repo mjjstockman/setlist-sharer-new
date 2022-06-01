@@ -3,11 +3,13 @@ from .models import Setlist
 
 
 class SetlistForm(forms.ModelForm):
-    # gig = forms.CharField(initial=2)
     class Meta:
         model = Setlist
-        fields = ['gig', 'song']
-        widgets = {'gig': forms.HiddenInput()}
+        fields = ['gig', 'song', 'author']
+        widgets = {
+            'gig': forms.HiddenInput(),
+            'author': forms.HiddenInput(),
+            }
 
 class EditForm(forms.ModelForm):
     class Meta:
