@@ -9,3 +9,8 @@ class Gig(models.Model):
 
     def __str__(self):
         return f"{self.venue} in {self.venue.city} on {self.date}"
+
+
+    
+
+    

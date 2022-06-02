@@ -36,13 +36,14 @@ NO SETLIST:
     </ul>
     {% elif gig.setlist_gig.status == 1 %}
     ADD LINK TO SETLIST DETAIL
+    {{ gig.id }}
     <ul>
-        <a href="/setlist/setlist-detail/{{ gig.setlist.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
+        <a href="/setlist/setlist-detail/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
     </ul>
     {% else %}
-    ADD SETLIST
+    ADD LINK TO ADD
     <ul>
-        <a href="/setlist/add/{{ gig.pk }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
+        <a href="/setlist/add/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
     </ul>
     {% endif %}
 {% endfor %} 
