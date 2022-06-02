@@ -2,13 +2,42 @@
 
 {% block content %}
 
-
+PUBLISHED SETLISTS:
 
 {% for gig in published %}
     <ul>
         <li>{{ gig.gig.date }} {{ gig.gig.venue }} {{ gig.gig.venue.city }}</li>
     </ul>
 {% endfor %} 
+
+PENDING SETLISTS:
+
+{% for gig in pending %}
+    <ul>
+        <li>{{ gig.gig.date }} {{ gig.gig.venue }} {{ gig.gig.venue.city }}</li>
+    </ul>
+{% endfor %} 
+
+NO SETLIST:
+
+{% for gig in no_list %}
+    <ul>
+        <li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li>
+    </ul>
+{% endfor %}
+
+<!-- {% for gig in gigs %}
+    {% if gig.setlist %}
+        <ul>
+             <a href="/setlist/setlist-detail/{{ gig.setlist.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a> 
+            <li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }} has setlist</li>
+        </ul>
+    {% else %}
+        <li>{{ gig.date }} {{ gig.venue }}. {{ gig.venue.city }} NO SETLIST</li>
+        <a href="/setlist/add/{{ gig.id }}">Add Setlist</a>
+    {% endif %}
+{% endfor %}  -->
+
 
 
 <!-- {% for gig in gigs %}
