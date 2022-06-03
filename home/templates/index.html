@@ -28,7 +28,7 @@ NO SETLIST:
     </ul>
 {% endfor %} -->
 
-{% for gig in gigs %}
+<!-- {% for gig in gigs %}
     {% if gig.setlist_gig.status == 0 %}
     STATE SETLIST PENDING APPROVAL
     <ul>
@@ -46,22 +46,22 @@ NO SETLIST:
         <a href="/setlist/add/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
     </ul>
     {% endif %}
-{% endfor %} 
+{% endfor %}  -->
 
 
 
 
 <!-- {% for gig in published %}
-ADD LINK TO SETLIST DETAIL
+    ADD LINK TO SETLIST DETAIL
     <ul>
-        <li>{{ gig.gig.date }} {{ gig.gig.venue }} {{ gig.gig.venue.city }}</li>
+        <a href="/setlist/setlist-detail/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
     </ul>
 {% endfor %} 
 
 {% for gig in pending %}
-STATE SETLIST PENDING APPROVAL
+    STATE SETLIST PENDING APPROVAL
     <ul>
-        <li>{{ gig.gig.date }} {{ gig.gig.venue }} {{ gig.gig.venue.city }}</li>
+        <li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li>
     </ul>
 {% endfor %} 
 
@@ -69,12 +69,30 @@ STATE SETLIST PENDING APPROVAL
 {% for gig in no_list %}
     ADD SETLIST LINK
     <ul>
-        <li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li>
+        <a href="/setlist/add/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
     </ul>
 {% endfor %}   -->
 
 
+<!-- {{ gigs_setlist }} -->
 
+
+{% for gig in gigs_setlist %}
+    {{ gig.gig.date }}
+{% endfor %}
+
+<!-- {% for gig in gigs_setlist|dictsort:"gig.gig.date" %}
+    {% if gig.gig.setlist_gig.status == 0 %}
+        I AM PENDING
+        {{ gig.gig.date }} {{ gig.gig.venue }} {{ gig.gig.venue.city}}
+    {% elif gig.gig.setlist_gig.status == 1 %}
+        I AM PUBLISHED
+        {{ gig.gig.date }} {{ gig.gig.venue }} {{ gig.gig.venue.city}}
+    {% else %}
+        I HAVE NO SETLIST
+        {{ gig.gig.date }} {{ gig.gig.venue }} {{ gig.gig.venue.city}}
+    {% endif %}
+{% endfor %} -->
 
 
 
