@@ -178,7 +178,6 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         }
     }
-
 }
 
 # Default primary key field type
