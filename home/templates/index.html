@@ -4,8 +4,20 @@
 
 
 {% for gig in gigs %}
+    <!-- {% if gig.featured_image == 'placeholder' %}
+         <img src="{{gig.featured_image.url}}" alt="didnt work"> 
+        not a placeholder -->
+    <!-- {% endif %} -->
+    
+    {% if 'placeholder' not in gig.featured_image.url %}
+        <img src="{{ gig.featured_image.url }}" alt="didnt work"> 
+    {% endif %}
+
+
+
     {% if gig.setlist_gig.status == 0 %}
         THIS IS PENDING, COME BACK SOON
+        
         <ul>
             <li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city}}</li>
         </ul>

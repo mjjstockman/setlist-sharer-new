@@ -13,6 +13,3 @@ class Gig(models.Model):
         return f"{self.venue} in {self.venue.city} on {self.date}"
 
 
-    
-
-    
