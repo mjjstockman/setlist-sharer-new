@@ -13,5 +13,6 @@ urlpatterns = [
     path('agree/<str:pk>/', agree, name='agree'),
     path('disagree/<str:pk>/', disagree, name='disagree'),
     path('setlist-detail/<str:pk>/', setlist_detail, name='detail'),
-    path('add-image/', add_image, name='add_image'),
+    # path('add-image/<int:pk>/', add_image, name='add_image'),
+    # path('add-image/<str:pk>/', add_image, name='add_image'),
 ]

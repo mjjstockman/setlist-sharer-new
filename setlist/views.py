@@ -112,6 +112,22 @@ def edit(request, pk):
     }
     return render(request, 'setlist/add.html', context)
 
+def add_image(request, pk):
+    gig = Gig.objects.get(id=pk)
+    form = EditForm(instance=gig)
+    
+
+    if request.method == 'POST':
+        form = EditForm(request.POST, instance=setlist)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'setlist/add.html', context)
+
 
 def delete(request, pk):
     setlist = Setlist.objects.get(id=pk)

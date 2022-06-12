@@ -8,7 +8,9 @@
          <img src="{{gig.featured_image.url}}" alt="didnt work"> 
         not a placeholder -->
     <!-- {% endif %} -->
-    
+    <form action="/add-image/{{ gig.id }}">
+        <input type="submit" value="Add Photo">
+    </form>
     {% if 'placeholder' not in gig.featured_image.url %}
         <img src="{{ gig.featured_image.url }}" alt="didnt work"> 
     {% endif %}
@@ -21,16 +23,19 @@
         <ul>
             <li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city}}</li>
         </ul>
+        
     {% elif gig.setlist_gig.status == 1 %}
     PUBLISHED
         <ul>
             <a href="/setlist/setlist-detail/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
         </ul>
+     
     {% else %}
     NO LIST
         <ul>
             <a href="/setlist/add/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
         </ul>
+        
     {% endif %}
 {% endfor %}
 

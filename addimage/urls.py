@@ -6,5 +6,5 @@ from .views import add_image
 
 urlpatterns = [
     # url user types in, view function to return, name
-    path('', add_image, name='add_image'),
+    path('', add_image, name='add-image'),
 ]
