@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from cloudinary.forms import cl_init_js_callbacks
+from django.contrib.auth.decorators import login_required
 from home.models import Gig
 from .forms import AddImageForm
 
@@ -10,7 +11,7 @@ from .forms import AddImageForm
 
 # Create your views here.
 
-# DO SAME AS EDIT SETLIST BUT INCLUDE IMG UPLOAD FIELD
+@login_required
 def add_image(request, pk):
     gig = Gig.objects.get(id=pk)
     # form = EditForm(instance=setlist)
