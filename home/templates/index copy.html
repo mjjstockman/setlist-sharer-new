@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for gig in gigs %}
+  
+    {{ gig.feature_image.status }}
+    {% if gig.setlist_gig.status == 0 %}
+        THIS IS PENDING, COME BACK SOON
+        
+        <ul>
+            <li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city}}</li>
+        </ul>
+        <form action="/add-image/{{ gig.id }}">
+            <input type="submit" value="Add Photo">
+        </form>
+        {% if 'placeholder' not in gig.featured_image.url %}
+            <img src="{{ gig.featured_image.url }}" alt="didnt work"> 
+        {% endif %}
+       
+        
+    {% elif gig.setlist_gig.status == 1 %}
+    PUBLISHED
+        <ul>
+            <a href="/setlist/setlist-detail/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
+        </ul>
+        
+        {% if 'placeholder' not in gig.featured_image.url %}
+            <img src="{{ gig.featured_image.url }}" alt="didnt work"> 
+        {% endif %}
+     
+    {% else %}
+    NO LIST
+        <ul>
+            <a href="/setlist/add/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
+        </ul>
+        <form action="/add-image/{{ gig.id }}">
+            <input type="submit" value="Add Photo">
+        </form>
+        {% if 'placeholder' not in gig.featured_image.url %}
+            <img src="{{ gig.featured_image.url }}" alt="didnt work"> 
+        {% endif %}
+        
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
+
+
+
+    <!-- {{ gig.feature_image.status }}
+
+    {% for gig in gigs %}
+  
+    {{ gig.feature_image.status }}
+    {% if gig.setlist_gig.status == 0 %}
+        THIS IS PENDING, COME BACK SOON
+        
+        <ul>
+            <li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city}}</li>
+        </ul>
+        <form action="/add-image/{{ gig.id }}">
+            <input type="submit" value="Add Photo">
+        </form>
+       
+        
+    {% elif gig.setlist_gig.status == 1 %}
+    PUBLISHED
+        <ul>
+            <a href="/setlist/setlist-detail/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
+        </ul>
+        
+        {% if 'placeholder' not in gig.featured_image.url %}
+            <img src="{{ gig.featured_image.url }}" alt="didnt work"> 
+        {% endif %}
+     
+    {% else %}
+    NO LIST
+        <ul>
+            <a href="/setlist/add/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
+        </ul>
+        <form action="/add-image/{{ gig.id }}">
+            <input type="submit" value="Add Photo">
+        </form>
+        {% if 'placeholder' not in gig.featured_image.url %}
+            <img src="{{ gig.featured_image.url }}" alt="didnt work"> 
+        {% endif %}
+        
+    {% endif %}
+{% endfor %} -->
+
+
+
+<!-- {% for gig in published %}
+    ADD LINK TO SETLIST DETAIL
+    <ul>
+        <a href="/setlist/setlist-detail/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
+    </ul>
+{% endfor %} 
+
+{% for gig in pending %}
+    STATE SETLIST PENDING APPROVAL
+    <ul>
+        <li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li>
+    </ul>
+{% endfor %} 
+
+
+{% for gig in no_list %}
+    ADD SETLIST LINK
+    <ul>
+        <a href="/setlist/add/{{ gig.id }}"><li>{{ gig.date }} {{ gig.venue }} {{ gig.venue.city }}</li></a>
+    </ul>
+{% endfor %}  -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- % if gig.featured_image_status == 0 %}
+        IMG STATUS = 0
+    {% endif %} -->
