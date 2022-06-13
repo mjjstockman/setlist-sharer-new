@@ -18,8 +18,8 @@ def add_image(request, pk):
     
     form = AddImageForm(request.POST, request.FILES, instance=gig)
     if request.method == 'POST':
-        # form = EditForm(request.POST, instance=gig)
         if form.is_valid():
+            gig.featured_image_status = 1
             form.save()
             return redirect('/')
 

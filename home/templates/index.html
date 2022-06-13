@@ -3,8 +3,15 @@
 {% block content %}
 
 {% for gig in gigs %}
-  
-    {{ gig.feature_image.status }}
+    {{ gig.featured_image_status }}
+    {% if gig.featured_image_status == 0 %}
+        ** WAITING CONFIRMATION **
+    {% elif gig.featured_image_status == 1 %}
+        ** PUBLISHED PIC **
+       
+    {% else %}
+        ** NO PIC **
+    {% endif %}
     {% if gig.setlist_gig.status == 0 %}
         THIS IS PENDING, COME BACK SOON
         
